@@ -1,1 +1,4 @@
-<p>task-details works!</p>
+<h2>{{ tasks1?.title }}</h2>
+<p>{{ tasks1?.description }}</p>
+<p>Status: {{ tasks1?.status }}</p>
+<a [routerLink]="['/tasks', tasks1?.task_id, 'edit']">Edit Task</a>

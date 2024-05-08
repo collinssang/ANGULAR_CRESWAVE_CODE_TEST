@@ -14,6 +14,8 @@ import {MatIcon} from "@angular/material/icon";
 import {TaskFormComponent} from "../task-form/task-form.component";
 import {NavigationStart, RouterLink} from "@angular/router";
 import {Router} from '@angular/router';
+import {TaskService} from "../task.service";
+import {NgForOf} from "@angular/common";
 
 @Component({
   selector: 'app-task-list',
@@ -32,17 +34,22 @@ import {Router} from '@angular/router';
     MatRowDef,
     MatHeaderCellDef,
     TaskFormComponent,
-    RouterLink
+    RouterLink,
+    NgForOf
   ],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
 })
 export class TaskListComponent {
-  constructor(private router: Router) {
+  constructor(private router: Router, private taskService: TaskService) {
 
   }
 
   tasks = [...tasks];
+
+  ngOnInit(): void {
+    this.tasks = this.taskService.getTasks();
+  }
 
   navigateToAddTask(): void {
     this.router.navigateByUrl('/add-task').then(() => {
