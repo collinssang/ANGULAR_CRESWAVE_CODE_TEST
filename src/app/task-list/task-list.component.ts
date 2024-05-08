@@ -8,7 +8,7 @@ import {
   MatRow, MatRowDef,
   MatTable
 } from "@angular/material/table";
-import {MatIconButton} from "@angular/material/button";
+import {MatButton, MatIconButton} from "@angular/material/button";
 import {Tasks, tasks} from "../tasks";
 import {MatIcon} from "@angular/material/icon";
 import {TaskFormComponent} from "../task-form/task-form.component";
@@ -35,7 +35,8 @@ import {NgForOf} from "@angular/common";
     MatHeaderCellDef,
     TaskFormComponent,
     RouterLink,
-    NgForOf
+    NgForOf,
+    MatButton
   ],
   templateUrl: './task-list.component.html',
   styleUrl: './task-list.component.css'
