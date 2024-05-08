@@ -1,1 +1,43 @@
-<p>task-list works!</p>
+<h1>Tasks List</h1>
+<a routerLink="/add-task">Add Task</a>
+<button (click)="navigateToAddTask()">Add Task</button>
+
+
+<table mat-table [dataSource]="tasks" class="mat-elevation-z8">
+
+  <!-- Index Column -->
+  <ng-container matColumnDef="index">
+    <th mat-header-cell *matHeaderCellDef>ID</th>
+    <td mat-cell *matCellDef="let task">{{ task.task_id }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="title">
+    <th mat-header-cell *matHeaderCellDef>Title</th>
+    <td mat-cell *matCellDef="let task">{{ task.title }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="description">
+    <th mat-header-cell *matHeaderCellDef>Description</th>
+    <td mat-cell *matCellDef="let task">{{ task.description }}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="status">
+    <th mat-header-cell *matHeaderCellDef>Status</th>
+    <td mat-cell *matCellDef="let task">{{ task.status}}</td>
+  </ng-container>
+
+  <ng-container matColumnDef="actions">
+    <th mat-header-cell *matHeaderCellDef>Actions</th>
+    <td mat-cell *matCellDef="let i = index; let task">
+      <button mat-icon-button color="primary" (click)="editTask(task.task_id)">
+        <mat-icon>edit</mat-icon>
+      </button>
+      <button mat-icon-button color="warn"  (click)="deleteTask(task.task_id)">
+        <mat-icon>delete</mat-icon>
+      </button>
+    </td>
+  </ng-container>
+  <tr mat-header-row *matHeaderRowDef="['index','title', 'description', 'status', 'actions']"></tr>
+  <tr mat-row *matRowDef="let row; columns: ['index','title', 'description', 'status', 'actions'];"></tr>
+
+</table>
